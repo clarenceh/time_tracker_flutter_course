@@ -14,7 +14,7 @@ class EmailSignInPage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Card(
-          child: EmailsignInForm(),
+          child: EmailSignInForm(),
         ),
       ),
       backgroundColor: Colors.grey[200],
