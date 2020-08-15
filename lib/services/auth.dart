@@ -4,9 +4,15 @@ import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class User {
-  User({@required this.uid});
+  User({
+    @required this.uid,
+    @required this.photoUrl,
+    @required this.displayName,
+  });
 
   final String uid;
+  final String photoUrl;
+  final String displayName;
 }
 
 abstract class AuthBase {
@@ -27,7 +33,11 @@ class Auth implements AuthBase {
       return null;
     }
 
-    return User(uid: user.uid);
+    return User(
+      uid: user.uid,
+      photoUrl: user.photoUrl,
+      displayName: user.displayName,
+    );
   }
 
   @override
@@ -49,13 +59,16 @@ class Auth implements AuthBase {
 
   @override
   Future<User> signInWithEmailAndPassword(String email, String password) async {
-    final authResult = await _firebaseAuth.signInWithEmailAndPassword(email: email, password: password);
+    final authResult = await _firebaseAuth.signInWithEmailAndPassword(
+        email: email, password: password);
     return _userFromFirebase(authResult.user);
   }
 
   @override
-  Future<User> createUserWithEmailAndPassword(String email, String password) async {
-    final authResult = await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
+  Future<User> createUserWithEmailAndPassword(
+      String email, String password) async {
+    final authResult = await _firebaseAuth.createUserWithEmailAndPassword(
+        email: email, password: password);
     return _userFromFirebase(authResult.user);
   }
 
@@ -65,8 +78,7 @@ class Auth implements AuthBase {
 
     final googleAccount = await googleSignIn.signIn();
     if (googleAccount != null) {
-      final googleAuth =
-          await googleAccount.authentication;
+      final googleAuth = await googleAccount.authentication;
 
       if (googleAuth.idToken != null && googleAuth.accessToken != null) {
         final authResult = await _firebaseAuth.signInWithCredential(
