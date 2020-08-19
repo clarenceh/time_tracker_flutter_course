@@ -28,6 +28,33 @@
       });
     }
   </script>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-auth.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-analytics.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/7.18.0/firebase-firestore.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyBhvfwcIxyNw-j9fk590z6OpB2Hb9btjR8",
+      authDomain: "time-tracker-flutter-cou-c3831.firebaseapp.com",
+      databaseURL: "https://time-tracker-flutter-cou-c3831.firebaseio.com",
+      projectId: "time-tracker-flutter-cou-c3831",
+      storageBucket: "time-tracker-flutter-cou-c3831.appspot.com",
+      messagingSenderId: "622372291335",
+      appId: "1:622372291335:web:0e79601161a705ad2bbba2",
+      measurementId: "G-VS40183YL2"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
+
   <script src="main.dart.js" type="application/javascript"></script>
 </body>
 </html>
